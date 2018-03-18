@@ -299,7 +299,21 @@
       
         
           
-            
+            <h1 id="关于字符串的匹配算法"><a href="#关于字符串的匹配算法" class="headerlink" title="关于字符串的匹配算法"></a>关于字符串的匹配算法</h1><blockquote>
+<p>问题描述：给出了一块印有acaabc图案的布，如何知道aab的图案出现几次呢？这里涉及到了字符串的匹配问题，当我们遇到这样的问题该怎么解答呢？一起来看一下吧。</p>
+</blockquote>
+<h2 id="1-暴力破解法——BF算法"><a href="#1-暴力破解法——BF算法" class="headerlink" title="1.暴力破解法——BF算法"></a>1.暴力破解法——BF算法</h2><blockquote>
+<p>法如其名，BF算法没有涉及什么重要的概念，我们假设有两个游标I，j分别指向文本串（T）和模式串（P）（文本串就是一整块大布，模式串就是需要找出的图案）</p>
+<p>那么，当出现T[I]=P[j]的时候，则进行I++，j++。当出现T[I] != P[j]的时候（匹配失败啦～）此时，I回溯到本次开始匹配的位置，j=0。</p>
+</blockquote>
+<p>我们来看一看代码以便更容易懂BF算法的思路</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int BFsearch(char  * T, char * P)&#123;</span><br><span class="line">    int N, M;</span><br><span class="line">    N = strlen(T); //获取文本串的长度</span><br><span class="line">    M = strlen(P); //获取模式串的长度</span><br><span class="line">    </span><br><span class="line">    //文本串从0到N-M进行偏移，开始进行匹配</span><br><span class="line">    for(int s = 0; s &lt;= N-M; s++)&#123;</span><br><span class="line">    //模式串从0到M进行匹配</span><br><span class="line">        for (int i = 0; i &lt; M; i++)&#123;</span><br><span class="line">            if(P[i] != T[i+s] ) //如果在这里出现匹配失败，那么跳出当前的for循环，</span><br><span class="line">            					//执行s++语句，进行下一步的匹配</span><br><span class="line">                break;</span><br><span class="line">            if(i == M-1)&#123;        //当i = M-1时，就证明我们要的图案已经找到啦～</span><br><span class="line">                cout &lt;&lt; &quot;having matched&quot;;</span><br><span class="line">                return s;		//这里我们返回此时s的位置，便于下一步的操作，</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来我们在看图片演示一下，来栗子喽：<img src="/Users/fiddles/Downloads/20170212231421875.png" alt="017021223142187"></p>
+<p>(a). 字符串开始匹配，可以看到，我们的大布和需要识别的图案的第一个字母是一样的呢～那么很显然的，我们看到了T[0] = P[0]，那么我们开始进行下一步的匹配，开始执行I++，s=s+I此时I变为1，s也变为1，这时候布的图案变成了c而我们要找的是a图案，T[1] != P[1]，这时候就跳出我们的第二个for循环，执行s++语句，开始我们的b步骤。</p>
+<p>(b). 啊哦～一上来就出现T[s] != P[0]了呢，没办法，我们直接跳出循环进行c步骤吧</p>
+<p>(c). 这时候我们可以按照a步骤开始进行匹配，T[s] = P[0], 继续执行第二个for循环语句，I++，直到I达到了我们需要找到图案的长度大小，好啦，大功告成，可以暂且喝杯茶休息一下啦～如果小伙伴们还想看剩下的部分里还有没有这样的图案，继续使s自加，方法类似就好啦。</p>
+<h2 id="2-比较高档的算法——KMP算法"><a href="#2-比较高档的算法——KMP算法" class="headerlink" title="2.比较高档的算法——KMP算法"></a>2.比较高档的算法——KMP算法</h2><p>这里因为白痴自己也没弄的太明白，暂且先让我在思考思考思考，KMP算法晚上在进行描述。</p>
+
           
         
       
