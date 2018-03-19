@@ -181,7 +181,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -257,7 +257,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T14:50:51+08:00">
                 2018-03-18
@@ -327,13 +327,38 @@
 <p>KMP算法的核心是计算字符串f每一个位置的字符串前缀和后缀公共部分的最大长度（不包括字符串本身，否则最大长度始终是字符串本身）。获得f每一个位置的最大公共长度之后，就可以利用求出来的最大公共长度快速和字符串O进行比较，当出现不同字符时，我们就将f向右移动（以匹配长度 - 最大公共长度）位，接着比较下一个位置。</p>
 </blockquote>
 <h3 id="前缀和后缀的概念"><a href="#前缀和后缀的概念" class="headerlink" title="前缀和后缀的概念"></a>前缀和后缀的概念</h3><p>相信大家在看完上面的内容，对于前缀和后缀是什么还是一脸懵逼，我们在这里举一个栗子，例如当我们给出了一个字符串：abcd</p>
-<p>那么他的前缀有                             他的后缀有</p>
-<p>a                                        d</p>
-<p>ab                                        cd</p>
-<p>abc                                        bcd</p>
+<p>那么他的前缀有                                                   他的后缀有</p>
+<p>a                                                                              d</p>
+<p>ab                                                                           cd</p>
+<p>abc                                                                         bcd</p>
 <p>当然不能包括自身喽， 所以就没有abcd的前缀和abcd的后缀啦</p>
-<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>了解了前缀后缀的概念，下面我们就开始进行求最大公共长度的大事啦～为了方便，我们引入了一个next数组来方便记录我们求得的遍历原字符串时求得的最大公共长度（这里我们要清楚的知道，next存放的数据下标是从0开始，还是从1开始）我们还是看一看代码来进一步了解：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>了解了前缀后缀的概念，下面我们就开始进行求最大公共长度的大事啦～为了方便，我们引入了一个next数组来方便记录我们求得的遍历原字符串时求得的最大公共长度（这里我们要清楚的知道，next存放的数据下标是从0开始，还是从1开始）。</p>
+<p>这里我们先来看一些例子：</p>
+<ol>
+<li>T=“abcdex”，我们引入一个变量j来表示模式串的位置</li>
+</ol>
+<p>(1). 当j=1时，next[1]=0;</p>
+<p>(2). 当j=2时，j由1到j-1就只有字符“a”，属于其他情况，这里我们就可以知道next[2]=1;</p>
+<p>(3). 当j=3时，j由1到j-1串是“ab”， 显然“a”和“b”是不相同的，属于其他情况，那么next[3]=1；</p>
+<p>(4). 同理，我们知道模式串T的next[j]为011111.</p>
+<p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047396071612.jpg" alt="img"></p>
+<ol>
+<li>T=“abcabx”</li>
+</ol>
+<p>(1). 当j=1时，next[1]=0;</p>
+<p>(2). 当j=2时，同理next[2]=1;</p>
+<p>(3). 当j=3时，同理next[3]=1;</p>
+<p>(4). 当j=4时，同理next[4]=1;</p>
+<p>(5). 当j=5时，这时候不能同理啦～我们来看一看这时候j从1到j-1的串串，“abca”，是不是发现啦这个串串的前缀和后缀的共同之处呢？没错就是“a”， 因此next[5]不能在等于1啦， 我们要给它的值进行加1操作，因此next[5]=2;</p>
+<p>(6). 当j=6时，我们可以知道这时候的串串是“abcab”，这里的前缀“ab”和后缀“ab”是不是又是相等的呢？那么我们在进行加一操作，这时候next[6]=3;</p>
+<p>这里我们就可以推测一下next数组的值和匹配到相等字符的个数的关系啦～嗯～～一个相等的时候next是2，两个是3，那么n个匹配到相等的字符next数组的值就是n+1啦。</p>
+<p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047452793380.jpg" alt="img"></p>
+<blockquote>
+<p>这里有一点点提示，在匹配next的时候，我们要知道，next数组的第一个是next[0]开始而不是next[1]哦～所以我们在匹配的时候最好错开一个位置看</p>
+</blockquote>
+<p>说了那么多，还是没有一行代码，下面我们还是看一看KMP算法的实现吧～</p>
+<h3 id="KMP算法的代码实现"><a href="#KMP算法的代码实现" class="headerlink" title="KMP算法的代码实现"></a>KMP算法的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//计算并获取要匹配的串T的next数组</span><br><span class="line">void get_next(string T, int * next)&#123;</span><br><span class="line">    int i, j;</span><br><span class="line">    i = 1;</span><br><span class="line">    j = 0;</span><br><span class="line">    next[1] = 0;</span><br><span class="line">    while (i &lt; T[0])&#123;  //这里的T[0]表示的是串的长度</span><br><span class="line">        if(j == 0 || T[i] == T[j])&#123; //T[i]表示后缀的单个字符</span><br><span class="line">            i++;					//T[j]表示前缀的单个字符</span><br><span class="line">            j++;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">        	j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//KMP算法</span><br><span class="line">int KMP(string S, string T, int pos)&#123;</span><br><span class="line">    int i = pos;				//i用于主串s当前位置下标值，若pos不为1则从pos位置开始匹配</span><br><span class="line">    int j = 1;					//j用于子串T中当前位置下标值</span><br><span class="line">    int next[100]; 				//定义一个next数组</span><br><span class="line">    get_next(T, next);			//得到next数组</span><br><span class="line">    while(i&lt;=S[0] &amp;&amp; j&lt;=T[0])&#123;	//大致思路和BF算法相同，这里我们换一种格式写便于大家理解其中原理</span><br><span class="line">        if(j==0 || S[i]==T[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        	j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if(j &gt; T[0])</span><br><span class="line">    	return i - T[0];</span><br><span class="line">    else</span><br><span class="line">    	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>至此我们KMP算法也说完啦，关于KMP算法的改进的话，我觉得大家有基础的话自己上网搜一搜博客就可以搞定啦～我们下一期再见</p>
 
           
         
@@ -416,7 +441,7 @@
                 <a href="/archives/">
               
                   <span class="site-state-item-count">1</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">Artikel</span>
                 </a>
               </div>
             
@@ -466,7 +491,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
