@@ -79,12 +79,30 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索使用的策略就像">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于搜索的几个小算法（一）">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/关于搜索的几个小算法/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索使用的策略就像">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171311886?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171331983?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171514677?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171542023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171558895?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171628598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171642359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171659268?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171716631?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171732754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171747699?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171800288?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171821249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:updated_time" content="2018-03-22T05:13:31.612Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="关于搜索的几个小算法（一）">
+<meta name="twitter:description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索使用的策略就像">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150930171311886?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
 
 
 
@@ -114,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/22/关于搜索的几个小算法/"/>
 
 
 
 
 
-  <title>Hexo</title>
+  <title>关于搜索的几个小算法（一） | Hexo</title>
   
 
 
@@ -139,8 +157,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -213,9 +230,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -245,9 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/22/关于搜索的几个小算法/" itemprop="url">关于搜索的几个小算法（一）</a></h1>
+          <h1 class="post-title" itemprop="name headline">关于搜索的几个小算法（一）</h1>
         
 
         <div class="post-meta">
@@ -297,9 +312,7 @@
       
 
       
-        
-          
-            <blockquote>
+        <blockquote>
 <p>首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。</p>
 </blockquote>
 <h1 id="关于搜索的几个小算法"><a href="#关于搜索的几个小算法" class="headerlink" title="关于搜索的几个小算法"></a>关于搜索的几个小算法</h1><p>问题描述：关于搜索的算法主要是为了以后进行图的操作。</p>
@@ -321,8 +334,6 @@
 <h3 id="深度优先的代码实现"><a href="#深度优先的代码实现" class="headerlink" title="深度优先的代码实现"></a>深度优先的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//深度优先的代码，可以有两种实现方式，但是笔者这里认为递归更能把深度优先的概念描述清楚</span><br><span class="line">class DFS_shixian&#123;</span><br><span class="line">    enum Colour&#123;</span><br><span class="line">        whilte, gray, black;</span><br><span class="line">    &#125;</span><br><span class="line">    class Node&#123;</span><br><span class="line">       	List&lt;Node&gt; adjNodeList;</span><br><span class="line">       	Colour colur;</span><br><span class="line">    &#125;</span><br><span class="line">    //DFS核心实现代码</span><br><span class="line">    void DFS(Node u)&#123;</span><br><span class="line">        u.colour = Colour.gray;</span><br><span class="line">        for(Node v : u.adjNodeList)&#123;  //这里是java用语，大概格式是for(元素类型t 元素变量x : 遍历										  //对象obj)</span><br><span class="line">            if (v.colour = Colour.white)&#123;</span><br><span class="line">                v.colour = Colour.gray;</span><br><span class="line">                DFS(v); //进行更深一步的搜索，</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    u.colour = Colour.black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>时间有点匆忙，还有十五分钟就要去上课了，这里暂且先记录到之先保存了。等下午有空继续更新。</p>
 
-          
-        
       
     </div>
     
@@ -339,191 +350,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/18/关于字符串的匹配算法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/18/关于字符串的匹配算法/" itemprop="url">关于字符串的匹配算法（一）</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-18T14:50:51+08:00">
-                2018-03-18
-              </time>
+              <a href="/2018/03/18/关于字符串的匹配算法/" rel="next" title="关于字符串的匹配算法（一）">
+                <i class="fa fa-chevron-left"></i> 关于字符串的匹配算法（一）
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="关于字符串的匹配算法"><a href="#关于字符串的匹配算法" class="headerlink" title="关于字符串的匹配算法"></a>关于字符串的匹配算法</h1><blockquote>
-<p>问题描述：给出了一块印有acaabc图案的布，如何知道aab的图案出现几次呢？这里涉及到了字符串的匹配问题，当我们遇到这样的问题该怎么解答呢？一起来看一下吧。</p>
-</blockquote>
-<h2 id="1-暴力破解法——BF算法"><a href="#1-暴力破解法——BF算法" class="headerlink" title="1.暴力破解法——BF算法"></a>1.暴力破解法——BF算法</h2><blockquote>
-<p>法如其名，BF算法没有涉及什么重要的概念，我们假设有两个游标I，j分别指向文本串（T）和模式串（P）（文本串就是一整块大布，模式串就是需要找出的图案）</p>
-<p>那么，当出现T[I]=P[j]的时候，则进行I++，j++。当出现T[I] != P[j]的时候（匹配失败啦～）此时，I回溯到本次开始匹配的位置，j=0。</p>
-</blockquote>
-<p>我们来看一看代码以便更容易懂BF算法的思路</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">int BFsearch(char  * T, char * P)&#123;</span><br><span class="line">    int N, M;</span><br><span class="line">    N = strlen(T); //获取文本串的长度</span><br><span class="line">    M = strlen(P); //获取模式串的长度</span><br><span class="line">    </span><br><span class="line">    //文本串从0到N-M进行偏移，开始进行匹配</span><br><span class="line">    for(int s = 0; s &lt;= N-M; s++)&#123;</span><br><span class="line">    //模式串从0到M进行匹配</span><br><span class="line">        for (int i = 0; i &lt; M; i++)&#123;</span><br><span class="line">            if(P[i] != T[i+s] ) //如果在这里出现匹配失败，那么跳出当前的for循环，</span><br><span class="line">            					//执行s++语句，进行下一步的匹配</span><br><span class="line">                break;</span><br><span class="line">            if(i == M-1)&#123;        //当i = M-1时，就证明我们要的图案已经找到啦～</span><br><span class="line">                cout &lt;&lt; &quot;having matched&quot;;</span><br><span class="line">                return s;		//这里我们返回此时s的位置，便于下一步的操作，</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>接下来我们在看图片演示一下，来栗子喽：<img src="http://img.blog.csdn.net/20170212231421875?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMTQ2NzA0NA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>(a). 字符串开始匹配，可以看到，我们的大布和需要识别的图案的第一个字母是一样的呢～那么很显然的，我们看到了T[0] = P[0]，那么我们开始进行下一步的匹配，开始执行i++，s=s+I此时I变为1，s也变为1，这时候布的图案变成了c而我们要找的是a图案，T[1] != P[1]，这时候就跳出我们的第二个for循环，执行s++语句，开始我们的b步骤。</p>
-<p>(b). 啊哦～一上来就出现T[s] != P[0]了呢，没办法，我们直接跳出循环进行c步骤吧</p>
-<p>(c). 这时候我们可以按照a步骤开始进行匹配，T[s] = P[0], 继续执行第二个for循环语句，I++，直到I达到了我们需要找到图案的长度大小，好啦，大功告成，可以暂且喝杯茶休息一下啦～如果小伙伴们还想看剩下的部分里还有没有这样的图案，继续使s自加，方法类似就好啦。</p>
-<h3 id="BF算法的时间复杂度"><a href="#BF算法的时间复杂度" class="headerlink" title="BF算法的时间复杂度"></a>BF算法的时间复杂度</h3><p>从时间复杂度方面来分析， 我们走的计算次数是M（N-M），大概的时间复杂度是O（M*N），相对而言是一个平方的数字。</p>
-<hr>
-<h2 id="2-比较高档的算法——KMP算法"><a href="#2-比较高档的算法——KMP算法" class="headerlink" title="2.比较高档的算法——KMP算法"></a>2.比较高档的算法——KMP算法</h2><blockquote>
-<p>算法背景：KMP算法是由Knuth，Morris和Pratt三位大牛设计的线形时间字符串匹配算法。我们这里还是用一大块布来较为形象的说明问题，有一块ababababababababababcdef的大布，我们需要找到一个abcd的图案，可以看到，大布上有好多ab连在一起却没有c，如果用BF算法的话，我们就要把前面的ab几乎都执行一遍，这对于少部分数据来说还比较快，但是对于超级超级多的数据来说显得过于繁琐，KMP算法提出了一个前缀和后缀的概念（我也不知道是谁提出来的，第一次接触前缀和后缀是在这里），接下来我们就看看传说中的KMP算法把！</p>
-</blockquote>
-<p>由于KMP算法难度较大，并且搜刮各路博客之后，发现并没有哪一个我可以明明白白，这里我也不敢保证各位看官可以看懂。</p>
-<h3 id="KMP算法思想"><a href="#KMP算法思想" class="headerlink" title="KMP算法思想"></a>KMP算法思想</h3><p>KMP算法的思想是在一个大的字符串O里寻找一个小的f， 当匹配到位置I时两个字符串不相等，这时，我们将小的字符串f进行右移，我们知道，在BF算法里，每次移动的距离都是1，但BF算法并没有考虑到在前面我们已经比较了i-1个字符的事实，所以此算法的效率并不是很高。试想，如果我们提前对大的字符串T进行下预处理，并对其进行分析，找到一个下一步该右移几个单位的k值，分析一下位移前后的小字符串P有什么特点，我们可以得到这样的结论。</p>
-<p>(a). A段字符串是f的一个前缀</p>
-<p>(b). B段字符串是f的一个后缀</p>
-<p>(c). A段字符串和B段字符串相等</p>
-<p>所以，在右移k个单位后，我们可以继续比较第I个字符的    前提是我们前面的i-1个字符是已经匹配好了的，换句话说就是长度为i-k-1的前缀A和后缀B相同，我们就可以把f进行右移，达到继续匹配的目的。<img src="http://img.blog.csdn.net/20130924000026250" alt="img"></p>
-<blockquote>
-<p>KMP算法的核心是计算字符串f每一个位置的字符串前缀和后缀公共部分的最大长度（不包括字符串本身，否则最大长度始终是字符串本身）。获得f每一个位置的最大公共长度之后，就可以利用求出来的最大公共长度快速和字符串O进行比较，当出现不同字符时，我们就将f向右移动（以匹配长度 - 最大公共长度）位，接着比较下一个位置。</p>
-</blockquote>
-<h3 id="前缀和后缀的概念"><a href="#前缀和后缀的概念" class="headerlink" title="前缀和后缀的概念"></a>前缀和后缀的概念</h3><p>相信大家在看完上面的内容，对于前缀和后缀是什么还是一脸懵逼，我们在这里举一个栗子，例如当我们给出了一个字符串：abcd</p>
-<p>那么他的前缀有                                                   他的后缀有</p>
-<p>a                                                                              d</p>
-<p>ab                                                                           cd</p>
-<p>abc                                                                         bcd</p>
-<p>当然不能包括自身喽， 所以就没有abcd的前缀和abcd的后缀啦</p>
-<h3 id="next数组"><a href="#next数组" class="headerlink" title="next数组"></a>next数组</h3><p>了解了前缀后缀的概念，下面我们就开始进行求最大公共长度的大事啦～为了方便，我们引入了一个next数组来方便记录我们求得的遍历原字符串时求得的最大公共长度（这里我们要清楚的知道，next存放的数据下标是从0开始，还是从1开始）。</p>
-<p>这里我们先来看一些例子：</p>
-<ol>
-<li>T=“abcdex”，我们引入一个变量j来表示模式串的位置</li>
-</ol>
-<p>(1). 当j=1时，next[1]=0;</p>
-<p>(2). 当j=2时，j由1到j-1就只有字符“a”，属于其他情况，这里我们就可以知道next[2]=1;</p>
-<p>(3). 当j=3时，j由1到j-1串是“ab”， 显然“a”和“b”是不相同的，属于其他情况，那么next[3]=1；</p>
-<p>(4). 同理，我们知道模式串T的next[j]为011111.</p>
-<p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047396071612.jpg" alt="img"></p>
-<ol>
-<li>T=“abcabx”</li>
-</ol>
-<p>(1). 当j=1时，next[1]=0;</p>
-<p>(2). 当j=2时，同理next[2]=1;</p>
-<p>(3). 当j=3时，同理next[3]=1;</p>
-<p>(4). 当j=4时，同理next[4]=1;</p>
-<p>(5). 当j=5时，这时候不能同理啦～我们来看一看这时候j从1到j-1的串串，“abca”，是不是发现啦这个串串的前缀和后缀的共同之处呢？没错就是“a”， 因此next[5]不能在等于1啦， 我们要给它的值进行加1操作，因此next[5]=2;</p>
-<p>(6). 当j=6时，我们可以知道这时候的串串是“abcab”，这里的前缀“ab”和后缀“ab”是不是又是相等的呢？那么我们在进行加一操作，这时候next[6]=3;</p>
-<p>这里我们就可以推测一下next数组的值和匹配到相等字符的个数的关系啦～嗯～～一个相等的时候next是2，两个是3，那么n个匹配到相等的字符next数组的值就是n+1啦。</p>
-<p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047452793380.jpg" alt="img"></p>
-<blockquote>
-<p>这里有一点点提示，在匹配next的时候，我们要知道，next数组的第一个是next[0]开始而不是next[1]哦～所以我们在匹配的时候最好错开一个位置看</p>
-</blockquote>
-<p>说了那么多，还是没有一行代码，下面我们还是看一看KMP算法的实现吧～</p>
-<h3 id="KMP算法的代码实现"><a href="#KMP算法的代码实现" class="headerlink" title="KMP算法的代码实现"></a>KMP算法的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//计算并获取要匹配的串T的next数组</span><br><span class="line">void get_next(string T, int * next)&#123;</span><br><span class="line">    int i, j;</span><br><span class="line">    i = 1;</span><br><span class="line">    j = 0;</span><br><span class="line">    next[1] = 0;</span><br><span class="line">    while (i &lt; T[0])&#123;  //这里的T[0]表示的是串的长度</span><br><span class="line">        if(j == 0 || T[i] == T[j])&#123; //T[i]表示后缀的单个字符</span><br><span class="line">            i++;					//T[j]表示前缀的单个字符</span><br><span class="line">            j++;</span><br><span class="line">            next[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        else </span><br><span class="line">        	j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">//KMP算法</span><br><span class="line">int KMP(string S, string T, int pos)&#123;</span><br><span class="line">    int i = pos;				//i用于主串s当前位置下标值，若pos不为1则从pos位置开始匹配</span><br><span class="line">    int j = 1;					//j用于子串T中当前位置下标值</span><br><span class="line">    int next[100]; 				//定义一个next数组</span><br><span class="line">    get_next(T, next);			//得到next数组</span><br><span class="line">    while(i&lt;=S[0] &amp;&amp; j&lt;=T[0])&#123;	//大致思路和BF算法相同，这里我们换一种格式写便于大家理解其中原理</span><br><span class="line">        if(j==0 || S[i]==T[j])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        	j = next[j];</span><br><span class="line">    &#125;</span><br><span class="line">    if(j &gt; T[0])</span><br><span class="line">    	return i - T[0];</span><br><span class="line">    else</span><br><span class="line">    	return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>至此我们KMP算法也说完啦，关于KMP算法的改进的话，我觉得大家有基础的话自己上网搜一搜博客就可以搞定啦～我们下一期再见</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -533,10 +381,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -544,6 +393,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -564,8 +417,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -607,6 +469,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于搜索的几个小算法"><span class="nav-number">1.</span> <span class="nav-text">关于搜索的几个小算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不撞南墙不回头——深度优先搜索"><span class="nav-number">1.1.</span> <span class="nav-text">不撞南墙不回头——深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先的算法图解"><span class="nav-number">1.1.1.</span> <span class="nav-text">深度优先的算法图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先的代码实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">深度优先的代码实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -740,6 +618,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
