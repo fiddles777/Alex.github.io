@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索的思想深度优先">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于搜索的几个小算法（一）">
+<meta property="og:url" content="http://yoursite.com/2018/03/22/关于搜索的几个小算法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索的思想深度优先">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171311886?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171331983?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171514677?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171542023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171558895?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171628598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171642359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171659268?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171716631?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171732754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171747699?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171800288?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150930171821249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20150710161545756">
+<meta property="og:updated_time" content="2018-03-22T11:25:32.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于搜索的几个小算法（一）">
+<meta name="twitter:description" content="首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。  关于搜索的几个小算法问题描述：关于搜索的算法主要是为了以后进行图的操作。 不撞南墙不回头——深度优先搜索深度优先搜索的思想深度优先">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20150930171311886?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/22/关于搜索的几个小算法/"/>
+
+
+
+
+
+  <title>关于搜索的几个小算法（一） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/22/关于搜索的几个小算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于搜索的几个小算法（一）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-22T12:24:31+08:00">
+                2018-03-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>首先这里先介绍一下为什么要总结一下搜索的算法，因为笔者最近要开始备战数学建模，队长要求我需要具备一些关于数据结构的遍历和二分等算法，并且要具备一些智能优化算法，如遗传算法，蚁群算法，模拟退火算法等，压力很大，这篇文章必须要在这个礼拜赶出来，这里的文风可能比较沉闷。</p>
+</blockquote>
+<h1 id="关于搜索的几个小算法"><a href="#关于搜索的几个小算法" class="headerlink" title="关于搜索的几个小算法"></a>关于搜索的几个小算法</h1><p>问题描述：关于搜索的算法主要是为了以后进行图的操作。</p>
+<h2 id="不撞南墙不回头——深度优先搜索"><a href="#不撞南墙不回头——深度优先搜索" class="headerlink" title="不撞南墙不回头——深度优先搜索"></a>不撞南墙不回头——深度优先搜索</h2><h3 id="深度优先搜索的思想"><a href="#深度优先搜索的思想" class="headerlink" title="深度优先搜索的思想"></a>深度优先搜索的思想</h3><p>深度优先搜索使用的策略就像是名字所隐含的：只要有可能就尽量在图中“深入”。深度优先搜索总是对最近才发现的结点v的出发边进行探索，直到该结点的所有出发边都被发现为止。一旦结点v的所有出发边都被发现，搜索则“回溯”到v的前驱点（v是经过该点才被搜索到的），来搜索该前驱结点的出发边。这个过程一直持续到从源结点可以达到的所有节点都被发现为止。如果还存在尚未发现的结点，则深度优先搜索将从这些未被发现的结点中任选一个作为新的源结点，并重复同样的搜索过程，直到图中的所有结点都被发现为止。</p>
+<h3 id="深度优先搜索的算法图解"><a href="#深度优先搜索的算法图解" class="headerlink" title="深度优先搜索的算法图解"></a>深度优先搜索的算法图解</h3><p>下面我们来看一下深度优先的图例（详见算法导论P351），在这里，我们用白色代表未被发现的点，灰色代表被发现但是未被搜索到的点，黑色代表已经被搜索过的点。</p>
+<p><img src="http://img.blog.csdn.net/20150930171311886?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171331983?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171514677?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p><img src="http://img.blog.csdn.net/20150930171542023?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171558895?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171628598?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p><img src="http://img.blog.csdn.net/20150930171642359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171659268?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171716631?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p><img src="http://img.blog.csdn.net/20150930171732754?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171747699?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"><img src="http://img.blog.csdn.net/20150930171800288?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p><img src="http://img.blog.csdn.net/20150930171821249?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>深度优先的运行过程如下：</p>
+<p>(1). 第一个图里，我们可以看到所有结点都是白色，代表还未被发现</p>
+<p>(2). 第二个图里，我们注意到1号结点的位置变成了灰色，但是其他的还是白色，一号结点指向2号结点</p>
+<p>(3). 不出意外，第三个图里二号结点已经被发现了，以此类推，五号，四号结点</p>
+<p>(4). 到四号结点的时候，我们发现四号结点并没有能继续向别处指向的箭头了，于是，我们把四号结点涂黑，表示搜索完毕，开始进行回溯到五号结点，依次执行的顺序分别是五号，二号，一号结点被涂黑。</p>
+<p>(5). 一号结点已经被涂黑，但是图里还有其他的结点怎么半？我们另行找一个新的结点作为根结点，这里我们找到了三号结点。</p>
+<p>(6). 三号结点想要指向五号结点（已经被搜索到标记成黑色的结点表示并不稀罕慢悠悠的三号结点，于是拒绝了他的搜索），三号结点只能指向六号结点。</p>
+<p>(7). 六号结点也想继续向下指，但是他向下的箭头就是自己呀，自己指向已经被发现的自己，那么自己也被涂黑啦～于是开始回溯到3号点，发现他并没有下一个分支，这时候我们把三号点涂黑，搜索也就完毕啦～</p>
+<h3 id="深度优先搜索的代码实现"><a href="#深度优先搜索的代码实现" class="headerlink" title="深度优先搜索的代码实现"></a>深度优先搜索的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">//深度优先的代码，可以有两种实现方式——递归和非递归，但是笔者这里认为递归更能把深度优先的概念描述清楚</span><br><span class="line">class DFS_shixian&#123;</span><br><span class="line">    enum Colour&#123;</span><br><span class="line">        whilte, gray, black;</span><br><span class="line">    &#125;</span><br><span class="line">    class Node&#123;</span><br><span class="line">       	List&lt;Node&gt; adjNodeList;</span><br><span class="line">       	Colour colur;</span><br><span class="line">    &#125;</span><br><span class="line">    //DFS核心实现代码</span><br><span class="line">    void DFS(Node u)&#123;</span><br><span class="line">        u.colour = Colour.gray;</span><br><span class="line">        for(Node v : u.adjNodeList)&#123;  //这里是java用语，大概格式是for(元素类型t 元素变量x : 遍历										  //对象obj)</span><br><span class="line">            if (v.colour = Colour.white)&#123;</span><br><span class="line">                v.colour = Colour.gray;</span><br><span class="line">                DFS(v); //进行更深一步的搜索，</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    u.colour = Colour.black;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于以上的代码，大家可能觉得有一些抽象，我现在看起来也还是一脸懵逼，觉得还是用C语言代码实现比较好懂。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># include &lt;iostream&gt;</span><br><span class="line"># include &lt;cstring&gt;</span><br><span class="line"># include &lt;queue&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string str[300];</span><br><span class="line">int vis[300], i; //标记数组，在一个路径中，防止出现循环查找出现死循环</span><br><span class="line">int flag = 0; //用于判断是否已经查找到了，相当于是否结点变黑</span><br><span class="line"></span><br><span class="line">void DFS(string use)&#123;</span><br><span class="line">    char last = use[use.length() - 1];</span><br><span class="line">    if (flag == 1) //flag为1则表明已经被找到了，那么我们就退出，避免不必要的操作</span><br><span class="line">    	return ;</span><br><span class="line">    for (int k = 0; k &lt; i; k++)&#123; //开始进行遍历循环，</span><br><span class="line">        if (vis[k]==0 &amp;&amp; str[k][0]==last)&#123; //如果未被遍历，并且其开始结点和父结点相同，那我们开始遍历搜索</span><br><span class="line">            vis[k] = 1; //时刻把搜索到的点进行标记</span><br><span class="line">            if(str[k][str[k].length() - 1] == &apos;m&apos;)&#123; //若搜索到满足条件，我们这里就把flag设置为1，并且退出</span><br><span class="line">                flag = 1;</span><br><span class="line">                return ;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            	dfs(str[k]); //没有则不断递归直到搜索到</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">	while(cin &gt;&gt; str[i])&#123;</span><br><span class="line">        if(str[i] == &quot;0&quot;)&#123;</span><br><span class="line">            memset(vis, 0, sizeof(vis) );</span><br><span class="line">            flag = 0;</span><br><span class="line">            for (int j = 0; j &lt; i; j++)&#123;</span><br><span class="line">                if(str[j][0] == &apos;b&apos;)&#123;</span><br><span class="line">                    vis[j] = 1;</span><br><span class="line">                    dfs(str[j]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            i = 0;</span><br><span class="line">            if(flag == 1)</span><br><span class="line">            	cout &lt;&lt; &quot;Yes.&quot; &lt;&lt; endl;</span><br><span class="line">            else </span><br><span class="line">            	cout &lt;&lt; &quot;NO.&quot; &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        	i++;</span><br><span class="line">	&#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>好啦，代码到此结束，深度优先搜索笔者当时才大一上学期，完全不懂递归的概念，而且学长给我讲的时候很快很快，脸上有着把自己会的东西交出去的一脸满足感，当时的我真的是一脸懵逼，就是现在让我手写一份深度优先搜索的代码的话，我可能还是会出错，不管怎么说，暂且先这样，我们继续看下一个搜索。</p>
+<hr>
+<h2 id="一层一层推进——广度优先搜索"><a href="#一层一层推进——广度优先搜索" class="headerlink" title="一层一层推进——广度优先搜索"></a>一层一层推进——广度优先搜索</h2><blockquote>
+<p>坦白而言，广度优先搜索并没有深度优先搜索这么难理解，个人感觉广度优先搜索是最简单的搜索了，因为在后期学习图算法的时候，感觉他们有或多或少的参考了广度优先搜索的原型，而且我觉得用二叉树的广度优先遍历会比较简单一点。</p>
+</blockquote>
+<h3 id="广度优先搜索的思想"><a href="#广度优先搜索的思想" class="headerlink" title="广度优先搜索的思想"></a>广度优先搜索的思想</h3><p>给定一个图G=（V， E）和一个可以识别的源结点s，广度优先搜索对图G中的边进行系统性的探索来发现可以从源结点s到达的所有结点。该算法能计算从源结点s到每个可到达的结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。该树以园街店s为根结点，包含所有可以从s到达的结点。对于每个从源结点s可以到达的结点v，在广度优先搜索树里从结点s到结点v的简单路径所对应的就是图G中从结点s到结点v的“最短路径”，这个以后估计也会记录。</p>
+<h3 id="广度优先搜索的算法图解"><a href="#广度优先搜索的算法图解" class="headerlink" title="广度优先搜索的算法图解"></a>广度优先搜索的算法图解</h3><p><img src="http://img.blog.csdn.net/20150710161545756" alt="这里写图片描述"></p>
+<p>和上面的深度搜索图解一样，在这里，我们也用白色代表未被发现的点，灰色代表被发现但是未被搜索到的点，黑色代表已经被搜索过的点。</p>
+<p>图解步骤的话这里就不赘述了，大家看过上面的图解的话，这里应该并不是很费劲。我们还是直接看一下代码的实现。</p>
+<h3 id="广度优先搜索的代码实现"><a href="#广度优先搜索的代码实现" class="headerlink" title="广度优先搜索的代码实现"></a>广度优先搜索的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//突然感觉脑细胞不够使了，我先休息休息</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/18/关于字符串的匹配算法/" rel="next" title="关于字符串的匹配算法（一）">
+                <i class="fa fa-chevron-left"></i> 关于字符串的匹配算法（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">John Doe</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#关于搜索的几个小算法"><span class="nav-number">1.</span> <span class="nav-text">关于搜索的几个小算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不撞南墙不回头——深度优先搜索"><span class="nav-number">1.1.</span> <span class="nav-text">不撞南墙不回头——深度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索的思想"><span class="nav-number">1.1.1.</span> <span class="nav-text">深度优先搜索的思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索的算法图解"><span class="nav-number">1.1.2.</span> <span class="nav-text">深度优先搜索的算法图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深度优先搜索的代码实现"><span class="nav-number">1.1.3.</span> <span class="nav-text">深度优先搜索的代码实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一层一层推进——广度优先搜索"><span class="nav-number">1.2.</span> <span class="nav-text">一层一层推进——广度优先搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索的思想"><span class="nav-number">1.2.1.</span> <span class="nav-text">广度优先搜索的思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索的算法图解"><span class="nav-number">1.2.2.</span> <span class="nav-text">广度优先搜索的算法图解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广度优先搜索的代码实现"><span class="nav-number">1.2.3.</span> <span class="nav-text">广度优先搜索的代码实现</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
