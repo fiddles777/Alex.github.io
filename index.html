@@ -775,6 +775,7 @@
 <p>(2). 当j=2时，j由1到j-1就只有字符“a”，属于其他情况，这里我们就可以知道next[2]=1;</p>
 <p>(3). 当j=3时，j由1到j-1串是“ab”， 显然“a”和“b”是不相同的，属于其他情况，那么next[3]=1；</p>
 <p>(4). 同理，我们知道模式串T的next[j]为011111.</p>
+<p><img src="/var/folders/f5/ljgrcb257gz1ydy7kln0tfnw0000gn/T/abnerworks.Typora/image-201803232134430.png" alt="mage-20180323213443"></p>
 <p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047396071612.jpg" alt="img"></p>
 <ol>
 <li>T=“abcabx”</li>
@@ -786,6 +787,7 @@
 <p>(5). 当j=5时，这时候不能同理啦～我们来看一看这时候j从1到j-1的串串，“abca”，是不是发现啦这个串串的前缀和后缀的共同之处呢？没错就是“a”， 因此next[5]不能在等于1啦， 我们要给它的值进行加1操作，因此next[5]=2;</p>
 <p>(6). 当j=6时，我们可以知道这时候的串串是“abcab”，这里的前缀“ab”和后缀“ab”是不是又是相等的呢？那么我们在进行加一操作，这时候next[6]=3;</p>
 <p>这里我们就可以推测一下next数组的值和匹配到相等字符的个数的关系啦～嗯～～一个相等的时候next是2，两个是3，那么n个匹配到相等的字符next数组的值就是n+1啦。</p>
+<p><img src="/var/folders/f5/ljgrcb257gz1ydy7kln0tfnw0000gn/T/abnerworks.Typora/image-201803232135052.png" alt="mage-20180323213505"></p>
 <p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047452793380.jpg" alt="img"></p>
 <blockquote>
 <p>这里有一点点提示，在匹配next的时候，我们要知道，next数组的第一个是next[0]开始而不是next[1]哦～所以我们在匹配的时候最好错开一个位置看</p>
