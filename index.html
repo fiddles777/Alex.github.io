@@ -271,7 +271,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/03/23/BlockChain周结/" itemprop="url">BlockChain周结</a></h1>
+                <a class="post-title-link" href="/2018/03/23/BlockChain周结/" itemprop="url">BlockChain周结————区块链记账原理</a></h1>
         
 
         <div class="post-meta">
@@ -345,7 +345,27 @@
       
         
           
-            
+            <h1 id="BlockChain周结————区块链记账原理"><a href="#BlockChain周结————区块链记账原理" class="headerlink" title="BlockChain周结————区块链记账原理"></a>BlockChain周结————区块链记账原理</h1><blockquote>
+<p>区块链作为当今热门的一个技术，开拓了数字货币的2.0时代，这里，我们开始总结一下区块链的记账原理</p>
+</blockquote>
+<p>区块链是一个基于密码学安全的分布式账本，是一个方便验证，不可篡改的行本，在讲区块链记账之前，我们先说明一下哈希函数。</p>
+<h2 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h2><h3 id="哈希函数的基本概念"><a href="#哈希函数的基本概念" class="headerlink" title="哈希函数的基本概念"></a>哈希函数的基本概念</h3><ol>
+<li>哈希函数又称散列函数，他是单向密码体制，即从明文到密文的不可逆映射，只有加密过程而没有解密过程，哈希函数可以将任意长度的输入经过变化后得到固定长度的输出，这个固定长度的输出，称为原消息的散列或消息映射。</li>
+<li>理想的哈希函数可以针对不同的输入得到不同的输出，如果存在两个不同的消息得到了相同的哈希值，那我们称这是一个碰撞</li>
+</ol>
+<h3 id="哈希函数的性质"><a href="#哈希函数的性质" class="headerlink" title="哈希函数的性质"></a>哈希函数的性质</h3><ol>
+<li><p>可压缩性：对于任意大小的输入x，哈希值的长度很小，并且是固定的长度。</p>
+</li>
+<li><p>单向性： 单向性也就死通过给定的哈希值得到原文是不行的，求接哈希函数的逆很困难。</p>
+</li>
+<li><p>抗碰撞性： 理想的哈希函数式无碰撞的，但是实际的算法设计中很难做到，有两种抗碰撞属性。分别是：</p>
+<p>a. 弱抗碰撞行：对于给定的一个消息，要发现另一个消息使其碰撞在计算上不可行。</p>
+<p>b. 强抗碰撞性质，对于任意的一对不同的消息，使其碰撞在计算上不可行</p>
+</li>
+<li><p>高灵敏度： 当一个输入位发生变化时，会有一半以上的输出位发生变化</p>
+</li>
+</ol>
+<h2 id="哈希函数的应用"><a href="#哈希函数的应用" class="headerlink" title="哈希函数的应用"></a>哈希函数的应用</h2>
           
         
       
@@ -447,8 +467,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 
@@ -620,8 +640,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">algorithm</span>
+                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithm</span>
                   </a>
                 </span>
 

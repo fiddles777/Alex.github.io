@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="We are all live in the gutter, but some of us are looking at the star">
+<meta name="description" content="BlockChain周结————区块链记账原理 区块链作为当今热门的一个技术，开拓了数字货币的2.0时代，这里，我们开始总结一下区块链的记账原理  区块链是一个基于密码学安全的分布式账本，是一个方便验证，不可篡改的行本，在讲区块链记账之前，我们先说明一下哈希函数。 哈希函数哈希函数的基本概念 哈希函数又称散列函数，他是单向密码体制，即从明文到密文的不可逆映射，只有加密过程而没有解密过程，哈希函数可">
 <meta name="keywords" content="“区块链”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BlockChain周结">
+<meta property="og:title" content="BlockChain周结————区块链记账原理">
 <meta property="og:url" content="http://yoursite.com/2018/03/23/BlockChain周结/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="We are all live in the gutter, but some of us are looking at the star">
+<meta property="og:description" content="BlockChain周结————区块链记账原理 区块链作为当今热门的一个技术，开拓了数字货币的2.0时代，这里，我们开始总结一下区块链的记账原理  区块链是一个基于密码学安全的分布式账本，是一个方便验证，不可篡改的行本，在讲区块链记账之前，我们先说明一下哈希函数。 哈希函数哈希函数的基本概念 哈希函数又称散列函数，他是单向密码体制，即从明文到密文的不可逆映射，只有加密过程而没有解密过程，哈希函数可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-23T08:22:34.879Z">
+<meta property="og:updated_time" content="2018-03-23T09:55:43.556Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BlockChain周结">
-<meta name="twitter:description" content="We are all live in the gutter, but some of us are looking at the star">
+<meta name="twitter:title" content="BlockChain周结————区块链记账原理">
+<meta name="twitter:description" content="BlockChain周结————区块链记账原理 区块链作为当今热门的一个技术，开拓了数字货币的2.0时代，这里，我们开始总结一下区块链的记账原理  区块链是一个基于密码学安全的分布式账本，是一个方便验证，不可篡改的行本，在讲区块链记账之前，我们先说明一下哈希函数。 哈希函数哈希函数的基本概念 哈希函数又称散列函数，他是单向密码体制，即从明文到密文的不可逆映射，只有加密过程而没有解密过程，哈希函数可">
 
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>BlockChain周结 | Hexo</title>
+  <title>BlockChain周结————区块链记账原理 | Hexo</title>
   
 
 
@@ -270,7 +270,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">BlockChain周结</h1>
+          <h1 class="post-title" itemprop="name headline">BlockChain周结————区块链记账原理</h1>
         
 
         <div class="post-meta">
@@ -342,7 +342,27 @@
       
 
       
-        
+        <h1 id="BlockChain周结————区块链记账原理"><a href="#BlockChain周结————区块链记账原理" class="headerlink" title="BlockChain周结————区块链记账原理"></a>BlockChain周结————区块链记账原理</h1><blockquote>
+<p>区块链作为当今热门的一个技术，开拓了数字货币的2.0时代，这里，我们开始总结一下区块链的记账原理</p>
+</blockquote>
+<p>区块链是一个基于密码学安全的分布式账本，是一个方便验证，不可篡改的行本，在讲区块链记账之前，我们先说明一下哈希函数。</p>
+<h2 id="哈希函数"><a href="#哈希函数" class="headerlink" title="哈希函数"></a>哈希函数</h2><h3 id="哈希函数的基本概念"><a href="#哈希函数的基本概念" class="headerlink" title="哈希函数的基本概念"></a>哈希函数的基本概念</h3><ol>
+<li>哈希函数又称散列函数，他是单向密码体制，即从明文到密文的不可逆映射，只有加密过程而没有解密过程，哈希函数可以将任意长度的输入经过变化后得到固定长度的输出，这个固定长度的输出，称为原消息的散列或消息映射。</li>
+<li>理想的哈希函数可以针对不同的输入得到不同的输出，如果存在两个不同的消息得到了相同的哈希值，那我们称这是一个碰撞</li>
+</ol>
+<h3 id="哈希函数的性质"><a href="#哈希函数的性质" class="headerlink" title="哈希函数的性质"></a>哈希函数的性质</h3><ol>
+<li><p>可压缩性：对于任意大小的输入x，哈希值的长度很小，并且是固定的长度。</p>
+</li>
+<li><p>单向性： 单向性也就死通过给定的哈希值得到原文是不行的，求接哈希函数的逆很困难。</p>
+</li>
+<li><p>抗碰撞性： 理想的哈希函数式无碰撞的，但是实际的算法设计中很难做到，有两种抗碰撞属性。分别是：</p>
+<p>a. 弱抗碰撞行：对于给定的一个消息，要发现另一个消息使其碰撞在计算上不可行。</p>
+<p>b. 强抗碰撞性质，对于任意的一对不同的消息，使其碰撞在计算上不可行</p>
+</li>
+<li><p>高灵敏度： 当一个输入位发生变化时，会有一半以上的输出位发生变化</p>
+</li>
+</ol>
+<h2 id="哈希函数的应用"><a href="#哈希函数的应用" class="headerlink" title="哈希函数的应用"></a>哈希函数的应用</h2>
       
     </div>
     
@@ -432,8 +452,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -497,6 +526,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BlockChain周结————区块链记账原理"><span class="nav-number">1.</span> <span class="nav-text">BlockChain周结————区块链记账原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希函数"><span class="nav-number">1.1.</span> <span class="nav-text">哈希函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希函数的基本概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">哈希函数的基本概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希函数的性质"><span class="nav-number">1.1.2.</span> <span class="nav-text">哈希函数的性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希函数的应用"><span class="nav-number">1.2.</span> <span class="nav-text">哈希函数的应用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
