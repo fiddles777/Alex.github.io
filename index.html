@@ -591,7 +591,8 @@
 <h3 id="广度优先搜索的算法图解"><a href="#广度优先搜索的算法图解" class="headerlink" title="广度优先搜索的算法图解"></a>广度优先搜索的算法图解</h3><p><img src="http://img.blog.csdn.net/20150710161545756" alt="这里写图片描述"></p>
 <p>和上面的深度搜索图解一样，在这里，我们也用白色代表未被发现的点，灰色代表被发现但是未被搜索到的点，黑色代表已经被搜索过的点。</p>
 <p>图解步骤的话这里就不赘述了，大家看过上面的图解的话，这里应该并不是很费劲。我们还是直接看一下代码的实现。</p>
-<h3 id="广度优先搜索的代码实现"><a href="#广度优先搜索的代码实现" class="headerlink" title="广度优先搜索的代码实现"></a>广度优先搜索的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//突然感觉脑细胞不够使了，我先休息休息</span><br></pre></td></tr></table></figure>
+<h3 id="广度优先搜索的代码实现"><a href="#广度优先搜索的代码实现" class="headerlink" title="广度优先搜索的代码实现"></a>广度优先搜索的代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">bool BFS(Node&amp; Vs, Node&amp; Vd)&#123;  </span><br><span class="line">    queue&lt;Node&gt; Q;  </span><br><span class="line">    Node Vn, Vw;  </span><br><span class="line">    int i;  </span><br><span class="line">  </span><br><span class="line">    //初始状态将起点放进队列Q  </span><br><span class="line">    Q.push(Vs);  </span><br><span class="line">    hash(Vw) = true;//设置节点已经访问过了！  </span><br><span class="line">  </span><br><span class="line">    while (!Q.empty())&#123;//队列不为空，继续搜索！  </span><br><span class="line">        //取出队列的头Vn  </span><br><span class="line">        Vn = Q.front();  </span><br><span class="line">  </span><br><span class="line">        //从队列中移除  </span><br><span class="line">        Q.pop();  </span><br><span class="line">  </span><br><span class="line">        while(Vw = Vn通过某规则能够到达的节点)&#123;  </span><br><span class="line">            if (Vw == Vd)&#123;//找到终点了！  </span><br><span class="line">                //把路径记录，这里没给出解法  </span><br><span class="line">                return true;//返回  </span><br><span class="line">            &#125;  </span><br><span class="line">  </span><br><span class="line">            if (isValid(Vw) &amp;&amp; !visit[Vw])&#123;  </span><br><span class="line">                //Vw是一个合法的节点并且为白色节点  </span><br><span class="line">                Q.push(Vw);//加入队列Q  </span><br><span class="line">                hash(Vw) = true;//设置节点颜色  </span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    return false;//无解  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我们摘了一个网上的一个例子，上学五天之后又要军训，心累！！</p>
 
           
         
@@ -775,7 +776,6 @@
 <p>(2). 当j=2时，j由1到j-1就只有字符“a”，属于其他情况，这里我们就可以知道next[2]=1;</p>
 <p>(3). 当j=3时，j由1到j-1串是“ab”， 显然“a”和“b”是不相同的，属于其他情况，那么next[3]=1；</p>
 <p>(4). 同理，我们知道模式串T的next[j]为011111.</p>
-<p><img src="/var/folders/f5/ljgrcb257gz1ydy7kln0tfnw0000gn/T/abnerworks.Typora/image-201803232134430.png" alt="mage-20180323213443"></p>
 <p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047396071612.jpg" alt="img"></p>
 <ol>
 <li>T=“abcabx”</li>
@@ -787,7 +787,6 @@
 <p>(5). 当j=5时，这时候不能同理啦～我们来看一看这时候j从1到j-1的串串，“abca”，是不是发现啦这个串串的前缀和后缀的共同之处呢？没错就是“a”， 因此next[5]不能在等于1啦， 我们要给它的值进行加1操作，因此next[5]=2;</p>
 <p>(6). 当j=6时，我们可以知道这时候的串串是“abcab”，这里的前缀“ab”和后缀“ab”是不是又是相等的呢？那么我们在进行加一操作，这时候next[6]=3;</p>
 <p>这里我们就可以推测一下next数组的值和匹配到相等字符的个数的关系啦～嗯～～一个相等的时候next是2，两个是3，那么n个匹配到相等的字符next数组的值就是n+1啦。</p>
-<p><img src="/var/folders/f5/ljgrcb257gz1ydy7kln0tfnw0000gn/T/abnerworks.Typora/image-201803232135052.png" alt="mage-20180323213505"></p>
 <p><img src="https://images0.cnblogs.com/blog2015/755265/201507/052047452793380.jpg" alt="img"></p>
 <blockquote>
 <p>这里有一点点提示，在匹配next的时候，我们要知道，next数组的第一个是next[0]开始而不是next[1]哦～所以我们在匹配的时候最好错开一个位置看</p>
