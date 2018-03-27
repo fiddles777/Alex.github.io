@@ -252,6 +252,259 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/27/关于网络流的算法问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Avril_Lavigne%27s_signature.svg/520px-Avril_Lavigne%27s_signature.svg.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alex's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/27/关于网络流的算法问题/" itemprop="url">关于网络流的算法问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-27T19:51:34+08:00">
+                2018-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/标准库函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Avril_Lavigne%27s_signature.svg/520px-Avril_Lavigne%27s_signature.svg.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alex's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/25/标准库函数/" itemprop="url">标准库函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T13:57:40+08:00">
+                2018-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="标准库函数（一）"><a href="#标准库函数（一）" class="headerlink" title="标准库函数（一）"></a>标准库函数（一）</h1><blockquote>
+<p>引言：大一上学期学习C语言的时候，只是学习了些部分的语法，对于一些特性，还不是很熟悉，这里介绍一些标准库函数，供自己以后查阅。</p>
+</blockquote>
+<h2 id="Exit"><a href="#Exit" class="headerlink" title="_Exit"></a>_Exit</h2><p>正常的终止一个程序，但是不屌用之前使用atexit()或at_quick_exit()所装载的任何清理函数，也不屌用之前使用signal()所装载的任何信号处理器。_Exit()函数会返回一个状态值给操作系统，这与函数exit一样。<img src="http://img.my.csdn.net/uploads/201303/05/1362494099_4563.png" alt="            img"></p>
+<p>相关函数：abort(), exit(), atexit(), quick_exit(), at_quick_exit(), raise()。</p>
+<h2 id="abort"><a href="#abort" class="headerlink" title="abort"></a>abort</h2><p>abort函数通过发出一个SIGABRT信号终止程序的执行。在执行时，不会清空一打开文件的缓冲区，也不会调用之前使用atexit()或at_quick_exit()所装载的任何清理函数。</p>
+<h2 id="abs"><a href="#abs" class="headerlink" title="abs"></a>abs</h2><p>获得一个整数的绝对值，在#include &lt;stdlib.h&gt;里。</p>
+<h2 id="acos"><a href="#acos" class="headerlink" title="acos"></a>acos</h2><p>计算一个数值的反余弦值，在# include &lt;math.h&gt;里，acos全称叫arc cosine。</p>
+<p>相关函数： </p>
+<p>​    针对复数的反余弦函数：cacos(), cacosf()和cacosl()。</p>
+<h2 id="acosh"><a href="#acosh" class="headerlink" title="acosh"></a>acosh</h2><p>计算一个数值的反双曲余弦， 返回一个非负值，其双曲余弦的值等于参数。由于任何数值的双曲余弦值一定大于或等于1，所以如果acosh()的参数小于1， 就会生成值域错误。</p>
+<h2 id="asctime"><a href="#asctime" class="headerlink" title="asctime"></a>asctime</h2><p>把日期和时间结构转换为字符串形式。</p>
+<p>asctime()的唯一参数是指向类型为struct tm结构的指针。</p>
+<h2 id="asctime-s"><a href="#asctime-s" class="headerlink" title="asctime_s"></a>asctime_s</h2><p>同上，但要进行边界检查</p>
+<p>暂且先看到这里吧，这本书看起来真的是头疼。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/MATLAB在数学建模中的应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1024,7 +1277,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1046,7 +1299,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

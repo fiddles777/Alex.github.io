@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="“MATLAB”," />
+  <meta name="keywords" content="“C”," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="问题来源：干啃书的时候遇到了好多关于matlab的语法和内嵌函数的问题，导致好多代码看不懂，这里开一篇文章记录一下遇到的语法问题。  MATLAB中的语法问题记录时间2018.3.24，好像并没有记录下什么，明天在更新吧，耳机没电，听不到音频没办法总结，今天暂且这样，早睡一天，明天还要培训呢！晚安！">
-<meta name="keywords" content="“MATLAB”">
+<meta name="description" content="标准库函数（一） 引言：大一上学期学习C语言的时候，只是学习了些部分的语法，对于一些特性，还不是很熟悉，这里介绍一些标准库函数，供自己以后查阅。  _Exit正常的终止一个程序，但是不屌用之前使用atexit()或at_quick_exit()所装载的任何清理函数，也不屌用之前使用signal()所装载的任何信号处理器。_Exit()函数会返回一个状态值给操作系统，这与函数exit一样。 相关函数">
+<meta name="keywords" content="“C”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MATLAB在数学建模中的应用">
-<meta property="og:url" content="http://yoursite.com/2018/03/24/MATLAB在数学建模中的应用/index.html">
+<meta property="og:title" content="标准库函数">
+<meta property="og:url" content="http://yoursite.com/2018/03/25/标准库函数/index.html">
 <meta property="og:site_name" content="Alex&#39;s Blog">
-<meta property="og:description" content="问题来源：干啃书的时候遇到了好多关于matlab的语法和内嵌函数的问题，导致好多代码看不懂，这里开一篇文章记录一下遇到的语法问题。  MATLAB中的语法问题记录时间2018.3.24，好像并没有记录下什么，明天在更新吧，耳机没电，听不到音频没办法总结，今天暂且这样，早睡一天，明天还要培训呢！晚安！">
+<meta property="og:description" content="标准库函数（一） 引言：大一上学期学习C语言的时候，只是学习了些部分的语法，对于一些特性，还不是很熟悉，这里介绍一些标准库函数，供自己以后查阅。  _Exit正常的终止一个程序，但是不屌用之前使用atexit()或at_quick_exit()所装载的任何清理函数，也不屌用之前使用signal()所装载的任何信号处理器。_Exit()函数会返回一个状态值给操作系统，这与函数exit一样。 相关函数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-24T15:31:34.784Z">
+<meta property="og:image" content="http://img.my.csdn.net/uploads/201303/05/1362494099_4563.png">
+<meta property="og:updated_time" content="2018-03-25T06:30:46.300Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MATLAB在数学建模中的应用">
-<meta name="twitter:description" content="问题来源：干啃书的时候遇到了好多关于matlab的语法和内嵌函数的问题，导致好多代码看不懂，这里开一篇文章记录一下遇到的语法问题。  MATLAB中的语法问题记录时间2018.3.24，好像并没有记录下什么，明天在更新吧，耳机没电，听不到音频没办法总结，今天暂且这样，早睡一天，明天还要培训呢！晚安！">
+<meta name="twitter:title" content="标准库函数">
+<meta name="twitter:description" content="标准库函数（一） 引言：大一上学期学习C语言的时候，只是学习了些部分的语法，对于一些特性，还不是很熟悉，这里介绍一些标准库函数，供自己以后查阅。  _Exit正常的终止一个程序，但是不屌用之前使用atexit()或at_quick_exit()所装载的任何清理函数，也不屌用之前使用signal()所装载的任何信号处理器。_Exit()函数会返回一个状态值给操作系统，这与函数exit一样。 相关函数">
+<meta name="twitter:image" content="http://img.my.csdn.net/uploads/201303/05/1362494099_4563.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/03/24/MATLAB在数学建模中的应用/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/03/25/标准库函数/"/>
 
 
 
 
 
-  <title>MATLAB在数学建模中的应用 | Alex's Blog</title>
+  <title>标准库函数 | Alex's Blog</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/24/MATLAB在数学建模中的应用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/25/标准库函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Alex">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MATLAB在数学建模中的应用</h1>
+          <h1 class="post-title" itemprop="name headline">标准库函数</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-24T23:05:27+08:00">
-                2018-03-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-25T13:57:40+08:00">
+                2018-03-25
               </time>
             
 
@@ -292,28 +294,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
-                    <span itemprop="name">MATLAB</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -342,10 +322,21 @@
       
 
       
-        <blockquote>
-<p>问题来源：干啃书的时候遇到了好多关于matlab的语法和内嵌函数的问题，导致好多代码看不懂，这里开一篇文章记录一下遇到的语法问题。</p>
+        <h1 id="标准库函数（一）"><a href="#标准库函数（一）" class="headerlink" title="标准库函数（一）"></a>标准库函数（一）</h1><blockquote>
+<p>引言：大一上学期学习C语言的时候，只是学习了些部分的语法，对于一些特性，还不是很熟悉，这里介绍一些标准库函数，供自己以后查阅。</p>
 </blockquote>
-<h1 id="MATLAB中的语法问题"><a href="#MATLAB中的语法问题" class="headerlink" title="MATLAB中的语法问题"></a>MATLAB中的语法问题</h1><p>记录时间2018.3.24，好像并没有记录下什么，明天在更新吧，耳机没电，听不到音频没办法总结，今天暂且这样，早睡一天，明天还要培训呢！晚安！</p>
+<h2 id="Exit"><a href="#Exit" class="headerlink" title="_Exit"></a>_Exit</h2><p>正常的终止一个程序，但是不屌用之前使用atexit()或at_quick_exit()所装载的任何清理函数，也不屌用之前使用signal()所装载的任何信号处理器。_Exit()函数会返回一个状态值给操作系统，这与函数exit一样。<img src="http://img.my.csdn.net/uploads/201303/05/1362494099_4563.png" alt="            img"></p>
+<p>相关函数：abort(), exit(), atexit(), quick_exit(), at_quick_exit(), raise()。</p>
+<h2 id="abort"><a href="#abort" class="headerlink" title="abort"></a>abort</h2><p>abort函数通过发出一个SIGABRT信号终止程序的执行。在执行时，不会清空一打开文件的缓冲区，也不会调用之前使用atexit()或at_quick_exit()所装载的任何清理函数。</p>
+<h2 id="abs"><a href="#abs" class="headerlink" title="abs"></a>abs</h2><p>获得一个整数的绝对值，在#include &lt;stdlib.h&gt;里。</p>
+<h2 id="acos"><a href="#acos" class="headerlink" title="acos"></a>acos</h2><p>计算一个数值的反余弦值，在# include &lt;math.h&gt;里，acos全称叫arc cosine。</p>
+<p>相关函数： </p>
+<p>​    针对复数的反余弦函数：cacos(), cacosf()和cacosl()。</p>
+<h2 id="acosh"><a href="#acosh" class="headerlink" title="acosh"></a>acosh</h2><p>计算一个数值的反双曲余弦， 返回一个非负值，其双曲余弦的值等于参数。由于任何数值的双曲余弦值一定大于或等于1，所以如果acosh()的参数小于1， 就会生成值域错误。</p>
+<h2 id="asctime"><a href="#asctime" class="headerlink" title="asctime"></a>asctime</h2><p>把日期和时间结构转换为字符串形式。</p>
+<p>asctime()的唯一参数是指向类型为struct tm结构的指针。</p>
+<h2 id="asctime-s"><a href="#asctime-s" class="headerlink" title="asctime_s"></a>asctime_s</h2><p>同上，但要进行边界检查</p>
+<p>暂且先看到这里吧，这本书看起来真的是头疼。</p>
 
       
     </div>
@@ -363,7 +354,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/“MATLAB”/" rel="tag"># “MATLAB”</a>
+            <a href="/tags/“C”/" rel="tag"># “C”</a>
           
         </div>
       
@@ -376,8 +367,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/23/BlockChain周结/" rel="next" title="BlockChain周结————区块链记账原理">
-                <i class="fa fa-chevron-left"></i> BlockChain周结————区块链记账原理
+              <a href="/2018/03/24/MATLAB在数学建模中的应用/" rel="next" title="MATLAB在数学建模中的应用">
+                <i class="fa fa-chevron-left"></i> MATLAB在数学建模中的应用
               </a>
             
           </div>
@@ -386,8 +377,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/03/25/标准库函数/" rel="prev" title="标准库函数">
-                标准库函数 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/03/27/关于网络流的算法问题/" rel="prev" title="关于网络流的算法问题">
+                关于网络流的算法问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -524,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MATLAB中的语法问题"><span class="nav-number">1.</span> <span class="nav-text">MATLAB中的语法问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#标准库函数（一）"><span class="nav-number">1.</span> <span class="nav-text">标准库函数（一）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Exit"><span class="nav-number">1.1.</span> <span class="nav-text">_Exit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abort"><span class="nav-number">1.2.</span> <span class="nav-text">abort</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#abs"><span class="nav-number">1.3.</span> <span class="nav-text">abs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#acos"><span class="nav-number">1.4.</span> <span class="nav-text">acos</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#acosh"><span class="nav-number">1.5.</span> <span class="nav-text">acosh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asctime"><span class="nav-number">1.6.</span> <span class="nav-text">asctime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#asctime-s"><span class="nav-number">1.7.</span> <span class="nav-text">asctime_s</span></a></li></ol></li></ol></div>
             
 
           </div>
