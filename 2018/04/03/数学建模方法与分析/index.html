@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="“MATLAB”," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在英语课上看完了一部分关于数学建模方法的书，这里写一个大概几百字的总结。  数学建模方法与分析——最优化模型在数学建模里有一类题是最优解，如进行工作希望达到最好的效果，企业试图通过对一些变量的控制从而达到利益的最大化，或者达到某一预期目标的前提下使得成本最低，等等等等。这些问题或许有些在高中初中已经做过，这里便是对求这样题的的基本思路，介绍一下数学建模的基础知识。 单变量最优化五步方法在数学建模">
+<meta name="keywords" content="“MATLAB”">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数学建模方法与分析">
+<meta property="og:url" content="http://yoursite.com/2018/04/03/数学建模方法与分析/index.html">
+<meta property="og:site_name" content="Alex&#39;s Blog">
+<meta property="og:description" content="在英语课上看完了一部分关于数学建模方法的书，这里写一个大概几百字的总结。  数学建模方法与分析——最优化模型在数学建模里有一类题是最优解，如进行工作希望达到最好的效果，企业试图通过对一些变量的控制从而达到利益的最大化，或者达到某一预期目标的前提下使得成本最低，等等等等。这些问题或许有些在高中初中已经做过，这里便是对求这样题的的基本思路，介绍一下数学建模的基础知识。 单变量最优化五步方法在数学建模">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-03T13:07:42.075Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数学建模方法与分析">
+<meta name="twitter:description" content="在英语课上看完了一部分关于数学建模方法的书，这里写一个大概几百字的总结。  数学建模方法与分析——最优化模型在数学建模里有一类题是最优解，如进行工作希望达到最好的效果，企业试图通过对一些变量的控制从而达到利益的最大化，或者达到某一预期目标的前提下使得成本最低，等等等等。这些问题或许有些在高中初中已经做过，这里便是对求这样题的的基本思路，介绍一下数学建模的基础知识。 单变量最优化五步方法在数学建模">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/03/数学建模方法与分析/"/>
+
+
+
+
+
+  <title>数学建模方法与分析 | Alex's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Alex's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/03/数学建模方法与分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Alex">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Avril_Lavigne%27s_signature.svg/520px-Avril_Lavigne%27s_signature.svg.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alex's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数学建模方法与分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-03T20:21:04+08:00">
+                2018-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MATLAB/" itemprop="url" rel="index">
+                    <span itemprop="name">MATLAB</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>在英语课上看完了一部分关于数学建模方法的书，这里写一个大概几百字的总结。</p>
+</blockquote>
+<h1 id="数学建模方法与分析——最优化模型"><a href="#数学建模方法与分析——最优化模型" class="headerlink" title="数学建模方法与分析——最优化模型"></a>数学建模方法与分析——最优化模型</h1><p>在数学建模里有一类题是最优解，如进行工作希望达到最好的效果，企业试图通过对一些变量的控制从而达到利益的最大化，或者达到某一预期目标的前提下使得成本最低，等等等等。这些问题或许有些在高中初中已经做过，这里便是对求这样题的的基本思路，介绍一下数学建模的基础知识。</p>
+<h2 id="单变量最优化"><a href="#单变量最优化" class="headerlink" title="单变量最优化"></a>单变量最优化</h2><h3 id="五步方法"><a href="#五步方法" class="headerlink" title="五步方法"></a>五步方法</h3><p>在数学建模的时候，我们解决问题的一般过程，我们称之为五步方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 提出问题</span><br><span class="line">2. 选择建模方法</span><br><span class="line">3. 推导模型的数学表达式</span><br><span class="line">4. 求解模型</span><br><span class="line">5. 回答问题</span><br></pre></td></tr></table></figure>
+<h4 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h4><p>第一步是提出问题，这里的提出问题并不是把我们得到的数学建模题目抄下来一遍就完事的问题。而是要对我们的实际问题用数学语言表达出来，并且对实际问题作出一些假设，在这个阶段，我们不必担心需要作出推测，因为我们往往总是可以在后面的过程中随时做出更好的推测。当然在用数学术语提出问题前，我们需要尽可能的把需要用到的，那些术语作出定义。</p>
+<p>首先列出实际问题设计的变量，同时选择其合适的单位。然后，写出关于这个变量有关的假设， 列出我们已知的或者假设的等式或者不等式，这些做完了，我们也可以正式的提出问题了。</p>
+<blockquote>
+<p>为了方便理解，我们引入一个简单的例子：一头猪重100kg，每天增重2.5kg，每天喂猪需要花费0.45元，猪的价格是每kg0.65元，但是价格每天下降一分，求出我们利润最高的出售时间。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">//最好在这里列出一个表格，简单清晰明了</span><br><span class="line">//为了避免混淆，这里采用大小写区分模式</span><br><span class="line">涉及到的变量：</span><br><span class="line">			t，时间（天）</span><br><span class="line">			w，猪的重量（kg）</span><br><span class="line">			p，猪的价格（元）</span><br><span class="line">			C，喂猪的花费（元）</span><br><span class="line">			R，卖猪的收益（元）</span><br><span class="line">			P，净收益（元）</span><br><span class="line">假设满足的条件：</span><br><span class="line">			w = 200 + 5t</span><br><span class="line">			p = 0.65 - 0.01</span><br><span class="line">			C = 0.45t</span><br><span class="line">			R = p * w</span><br><span class="line">			P = R - C</span><br><span class="line">			t &gt;= 0</span><br><span class="line">所需要求的目标：</span><br><span class="line">			P的最大值</span><br></pre></td></tr></table></figure>
+<p>当这样列出来之后，需要做的也是比较简单明了，队友进行深度思考的时候也会很容易的和你的思维进行接轨。</p>
+<h4 id="选择建模方法"><a href="#选择建模方法" class="headerlink" title="选择建模方法"></a>选择建模方法</h4><p>当我们完成第一步的时候，我们已经有了一个用数学语言描述的问题了，我们需要选择一种数学方法来获得解。许多问题都可以表示成一个已有有效的一般求解方法的标准形式。建模方法在本文里不做详细的介绍，需要大家多多查询数学与应用数学相关的论文，或者参考一下大学高等数学教科书，或者微积分入门教科书。</p>
+<h4 id="推导模型的数学表达式"><a href="#推导模型的数学表达式" class="headerlink" title="推导模型的数学表达式"></a>推导模型的数学表达式</h4><p>在这里就类似于方程的求解问题，我们把第一步得到的问题应用于第二步，进行部分化简写出较简洁的答案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如我们的例题：</span><br><span class="line">	P = R - C</span><br><span class="line">	  = p*w - o.45t	</span><br><span class="line">      = (0.65 - 0.01t)*(200 + 5t) - 0.45t</span><br></pre></td></tr></table></figure>
+<h4 id="求解模型"><a href="#求解模型" class="headerlink" title="求解模型"></a>求解模型</h4><p>在这一步是我们组的队长给我分配的任务。是在matlab里对第三步推导出来的数学公式用程序语言实现并尽可能的用更为形象的图像来展示出来，标出几个比较关键的点来支撑起整个模型。</p>
+<h4 id="回答问题"><a href="#回答问题" class="headerlink" title="回答问题"></a>回答问题</h4><p>最后一步，回答我们在第一步中提出的问题：何时我们才会有最高利润？由我们的数学模型，我们可以得到某种结论，在这里，如果我们的假设是对的，那么我们的结果就是对的，相关的问题及不同的假设可以按照第一步中的做法调整得到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//对于五步方法的总结</span><br><span class="line"></span><br><span class="line">第一步————提出问题：</span><br><span class="line">				1. 列出问题中设计的变量，包括适当的单位。</span><br><span class="line">				2. 注意不要混淆变量和常量。</span><br><span class="line">				3. 列出你对变量所做的全部假设，包括等式和不等式。</span><br><span class="line">				4. 检查单位从而保证你的假设有意义。</span><br><span class="line">				5. 用准确的数学术语给出问题的目标</span><br><span class="line">第二步————选择建模方法：</span><br><span class="line">				1. 选择解决问题的一个一般求解方法</span><br><span class="line">				2. 一般的，这一步的陈工需要经验，技巧和熟悉相关的论文</span><br><span class="line">第三步————推到模型中的数学表达式：</span><br><span class="line">				1. 将第一步中得到的问题重新表达成第二步选定的建模方法所需要的形式。</span><br><span class="line">				2. 记下任何补充假设，这些假设是为了使得第一步中描述的问题与第二步中选定的数学结构相适应					而作出的。</span><br><span class="line">第四步————求解模型：</span><br><span class="line">				1. 将第二部所选的一般求解过程应用于第三部得到表达式的特定问题</span><br><span class="line">				2. 注意数学推导，检查是否有错误，答案是否有意义</span><br><span class="line">				3. 可以采用matlab或者maple等进行形象化的实现</span><br><span class="line">第五步————回答问题：</span><br><span class="line">				1. 用非技术性的语言将第四步的结果重新表述</span><br><span class="line">				2. 避免数学符号和术语</span><br><span class="line">				3. 能理解最初提出的问题就可以理解给出的答案</span><br></pre></td></tr></table></figure>
+<p>数学建模比赛用到的方法好像真的只有五步法，作者本人数学建模的参赛经验并不是很多，这里暂时先写到这里，对于以后的深刻讨论，下一篇文章会写。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/“MATLAB”/" rel="tag"># “MATLAB”</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/27/关于网络流的算法问题/" rel="next" title="关于网络流的算法问题">
+                <i class="fa fa-chevron-left"></i> 关于网络流的算法问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Avril_Lavigne%27s_signature.svg/520px-Avril_Lavigne%27s_signature.svg.png"
+                alt="Alex" />
+            
+              <p class="site-author-name" itemprop="name">Alex</p>
+              <p class="site-description motion-element" itemprop="description">We are all live in the gutter, but some of us are looking at the star</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数学建模方法与分析——最优化模型"><span class="nav-number">1.</span> <span class="nav-text">数学建模方法与分析——最优化模型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单变量最优化"><span class="nav-number">1.1.</span> <span class="nav-text">单变量最优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#五步方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">五步方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#提出问题"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">提出问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择建模方法"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">选择建模方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#推导模型的数学表达式"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">推导模型的数学表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#求解模型"><span class="nav-number">1.1.1.4.</span> <span class="nav-text">求解模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回答问题"><span class="nav-number">1.1.1.5.</span> <span class="nav-text">回答问题</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Alex</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
